@@ -1,0 +1,505 @@
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Infant:wght@400;600;700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Sans+KR:wght@100..900&family=Public+Sans:ital,wght@0,100..900;1,100..900&display=swap");
+:root {
+  --white:#ffffff;
+  --black:#000000;
+}
+
+/*reset*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, tbody, tfoot, thead, tr, th, td {
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+li {
+  list-style: none;
+}
+
+address, em, i {
+  font-style: normal;
+}
+
+button {
+  background: none;
+  border: none;
+}
+
+img {
+  vertical-align: middle;
+}
+
+/*font*/
+.en, .con02 .workList li a .textBox h3 {
+  font-family: "Public Sans", serif;
+}
+
+.en2 {
+  font-family: "Cormorant Infant", serif;
+}
+
+.en3 {
+  font-family: "Montserrat", serif;
+}
+
+body {
+  font-family: "Noto Sans KR", sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.wrap {
+  position: relative;
+  margin: 0 auto;
+  overflow: hidden;
+  background: var(--black);
+  color: var(--white);
+}
+
+header {
+  width: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 100;
+  padding: 0.78125vw 1.5625vw;
+  display: flex;
+  justify-content: space-between;
+  transition: transform 0.3s;
+  color: var(--white);
+}
+header .menuOpen {
+  display: none;
+  transition: 0.3s;
+}
+header .gnb ul {
+  display: flex;
+  justify-content: space-between;
+}
+header .gnb ul li:not(header .gnb ul li:first-child) {
+  margin-left: 3.6458333333vw;
+}
+header .gnb ul li a {
+  display: block;
+}
+header .gnb ul li a:hover .char:before {
+  transform: translateY(0%);
+  opacity: 1;
+}
+header .gnb ul li a:hover .char:after {
+  transform: translateY(-100%);
+}
+header .gnb ul li a .char {
+  display: inline-block;
+  position: relative;
+  color: transparent;
+  overflow: hidden;
+}
+header .gnb ul li a .char:before, header .gnb ul li a .char:after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0.6;
+  color: var(--white);
+  content: attr(data-char);
+  transition: transform 0.35s;
+  transition-delay: calc(30ms * var(--char-index));
+}
+header .gnb ul li a .char:before {
+  transform: translateY(100%);
+}
+
+@keyframes textAni {
+  0% {
+    opacity: 0;
+  }
+  30% {
+    opacity: 0;
+    transform: translate3d(0, -100px, 0) skew(20deg);
+    transform-origin: top left;
+  }
+}
+@keyframes fadeIn {
+  from {
+    transform: translate3d(0, 100%, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0%, 0);
+  }
+}
+@keyframes slide-in {
+  from {
+    transform: translateY(-10em) scale(0.5);
+    opacity: 0;
+  }
+}
+@keyframes spin {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+.visual {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  letter-spacing: -1px;
+  padding-top: 7.8125vw;
+}
+.visual .mainText {
+  font-size: 5.2083333333vw;
+  line-height: 1;
+  margin: 0px 0px 7.8125vw 3.125vw;
+}
+.visual .subText {
+  margin-left: 3.125vw;
+}
+.visual .scroll {
+  position: absolute;
+  left: 3.125vw;
+  bottom: 3.125vw;
+  letter-spacing: 2px;
+}
+.visual .scroll .char {
+  animation: slide-in 2s cubic-bezier(0.5, 0, 0.5, 1) both reverse;
+  animation-delay: calc(60ms * var(--char-index));
+  animation-iteration-count: infinite;
+}
+.visual.motion .mainText {
+  transform: translate3d(0, 0, 0) skew(0deg);
+  overflow: hidden;
+}
+.visual.motion .mainText p span {
+  display: block;
+  animation-name: textAni;
+  animation-duration: 2s;
+}
+.visual.motion .mainText p:nth-child(2) span {
+  animation-duration: 2.2s;
+}
+.visual.motion .mainText p:nth-child(3) span {
+  animation-duration: 2.4s;
+}
+.visual.motion .subText {
+  transform: translate3d(0, 0, 0) skew(0deg);
+  overflow: hidden;
+}
+.visual.motion .subText p {
+  display: block;
+  animation-name: fadeIn;
+  animation-duration: 2s;
+}
+
+.con01 {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+}
+.con01 .videoWarp video {
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+.con01 .title {
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.con01 .title h2 {
+  font-size: 4.1666666667vw;
+  font-weight: 400;
+  letter-spacing: -1px;
+  line-height: 1.2;
+  color: var(--white);
+  opacity: 0;
+}
+
+.con02 {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.con02 .title {
+  width: 100%;
+  height: 100vh;
+  font-size: 7.2916666667vw;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  line-height: 0.8;
+  letter-spacing: -3px;
+}
+.con02 .workList {
+  width: 70%;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  position: relative;
+  z-index: 99;
+  padding-bottom: 100vh;
+}
+.con02 .workList li {
+  width: 45%;
+  margin-top: 15vh;
+}
+.con02 .workList li:nth-child(2n) {
+  margin-top: 0;
+}
+.con02 .workList li a {
+  width: 100%;
+  display: block;
+}
+.con02 .workList li a .textBox h3 {
+  font-size: 1.6666666667vw;
+  margin: 0.7291666667vw 0 0.2604166667vw;
+  line-height: 1.2;
+  letter-spacing: -1px;
+  font-weight: 400;
+}
+.con02 .workList li a .textBox .info {
+  display: flex;
+  justify-content: space-between;
+  color: #888;
+}
+.con02 .workList li a .imgBox {
+  position: relative;
+  aspect-ratio: 3/4;
+  overflow: hidden;
+}
+.con02 .workList li a .imgBox:before {
+  content: "";
+  width: 3.125vw;
+  height: 3.125vw;
+  border-radius: 100%;
+  background: url("../images/readMore2.png") no-repeat center/2.34375vw;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) rotate(45deg);
+  z-index: 1;
+  transition: all 0.3s;
+  opacity: 0;
+}
+.con02 .workList li a .imgBox:after {
+  content: "";
+  width: 0px;
+  height: 0px;
+  position: absolute;
+  border-radius: 100%;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  animation-name: spin;
+  animation-duration: 10s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  transition: 0.4s;
+  z-index: 1;
+  background: #ffffff url("../images/readMore3.png") no-repeat center/6.7708333333vw;
+}
+.con02 .workList li a .imgBox img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: all 0.3s;
+  filter: grayscale(1);
+}
+.con02 .workList li a:hover .imgBox:before {
+  opacity: 1;
+  z-index: 2;
+}
+.con02 .workList li a:hover .imgBox:after {
+  width: 130px;
+  height: 130px;
+}
+.con02 .workList li a:hover .imgBox img {
+  filter: grayscale(0);
+}
+
+.con03 {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+}
+.con03 .textWrap {
+  width: 70%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+}
+.con03 .textWrap .title {
+  font-size: 0.9375vw;
+}
+.con03 .textWrap ul li {
+  font-size: 5.2083333333vw;
+  line-height: 1.1;
+  overflow: hidden;
+}
+.con03 .textWrap ul li p {
+  overflow: hidden;
+}
+.con03 .textWrap ul li.en2 {
+  padding-left: 0.2604166667vw;
+  font-style: italic;
+}
+.con03 .btnWrap {
+  position: absolute;
+  left: 26.0416666667vw;
+  top: 60%;
+  z-index: 3;
+}
+.con03 .btnWrap a {
+  display: inline-block;
+  width: 7.8125vw;
+  height: 7.8125vw;
+  border-radius: 100%;
+  border: 1px solid var(--white);
+  position: relative;
+  transition: all 0.5s;
+}
+.con03 .btnWrap a:before {
+  content: "";
+  width: 0%;
+  height: 0%;
+  border-radius: 100%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  animation-name: spin;
+  animation-duration: 10s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  transition: 0.4s;
+  background: #fff url("/images/readMore3.png") no-repeat center/7.5520833333vw;
+}
+.con03 .btnWrap a:hover {
+  border: transparent;
+}
+.con03 .btnWrap a:hover:before {
+  width: 100%;
+  height: 100%;
+}
+.con03 .btnWrap a:hover img:nth-child(2) {
+  opacity: 1;
+}
+.con03 .btnWrap a.reverse {
+  border: transparent;
+}
+.con03 .btnWrap a.reverse:before {
+  width: 100%;
+  height: 100%;
+}
+.con03 .btnWrap a.reverse img:nth-child(2) {
+  opacity: 1;
+}
+.con03 .btnWrap a img {
+  width: 35%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+.con03 .btnWrap a img:nth-child(2) {
+  opacity: 0;
+}
+
+.swiper {
+  width: 100vw;
+  height: 13.0208333333vw;
+  margin-left: auto;
+  margin-right: auto;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%) rotate(5deg);
+}
+.swiper .swiper-wrapper {
+  transition-timing-function: linear !important;
+}
+.swiper .swiper-wrapper .swiper-slide {
+  text-align: center;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.3s all;
+  overflow: hidden;
+}
+.swiper .swiper-wrapper .swiper-slide img {
+  width: 100%;
+  object-fit: cover;
+  transform: scale(1.1);
+  filter: brightness(50%);
+}
+
+footer {
+  width: 100%;
+  position: relative;
+  height: 50vh;
+  padding: 2.0833333333vw 3.125vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+footer .textWrap {
+  font-size: 8.3333333333vw;
+  line-height: 1;
+  letter-spacing: -1px;
+}
+footer .textWrap .title {
+  font-size: 1.0416666667vw;
+  margin-bottom: 1.5625vw;
+  padding-left: 0.78125vw;
+}
+footer .textWrap .en2 {
+  margin-bottom: 0.5208333333vw;
+  font-size: 4.1666666667vw;
+  font-weight: 600;
+  font-style: italic;
+}
+footer .textWrap .en2 span {
+  display: block;
+  font-style: normal;
+}
+footer .bottom {
+  margin-top: auto;
+  display: flex;
+  justify-content: space-between;
+}
+footer .bottom a {
+  display: inline-block;
+}
+footer .bottom a:nth-child(2) {
+  margin-left: 0.4166666667vw;
+}
+footer .bottom a:hover {
+  transition: 0.5s;
+  text-decoration: underline;
+}
+
+/*# sourceMappingURL=main.css.map */

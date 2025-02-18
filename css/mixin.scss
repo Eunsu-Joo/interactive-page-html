@@ -1,0 +1,23 @@
+$breakpoint-mobile: 335px;
+$breakpoint-tablet: 758px;
+$breakpoint-desktop: 1024px;
+
+@function pc-vw($px){
+  $vw-context: 1920 * 0.01 * 1px;
+  @return $px / $vw-context * 1vw;
+}
+@function tablet-vw($px){
+  $vw-context: 768 * 0.01 * 1px;
+  @return $px / $vw-context * 1vw;
+}
+@function mobile-vw($px){
+  $vw-context: 360 * 0.01 * 1px;
+  @return $px / $vw-context * 1vw;
+}
+
+@mixin center{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+}
