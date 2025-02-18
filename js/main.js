@@ -7,6 +7,44 @@ $(function () {
         once: false, // only once animation play on scroll
         animateCssVersion: 4 // used animate.css version (3 or 4)
     });
+    const animationElem= document.querySelector(".sphere");
+    const radius = 200;
+    let fragment= document.createDocumentFragment();
+    function createTextAnimation(){
+
+        for(let i=1;i<=100;i++){
+            const phi = Math.acos(-1 + (2 * i) / 100);
+            const theta = Math.sqrt(100 * Math.PI) * phi;
+            let part = document.createElement('span');
+            part.textContent = "*";
+            const xPos = radius * Math.sin(phi) * Math.cos(theta);
+            const yPos = radius * Math.sin(phi) * Math.sin(theta);
+            const zPos = radius * Math.cos(phi);
+            part.style.transform = `translate3d(${xPos}px, ${yPos}px, ${zPos}px)`;
+            fragment.appendChild(part);
+        }
+        animationElem.appendChild(fragment);
+    }
+    createTextAnimation();
+    const target= document.querySelector(".textSphere"),
+        targetWidth= target.offsetWidth,
+        rangeTarget= document.querySelector(".visual");
+    window.addEventListener("mousemove",function(event) {
+        const x=event.pageX, y= event.pageY;
+        let newX= x- targetWidth/4,newY= y- targetWidth/4;
+        if(newX<0){
+            newX=0;
+        } else if(newX+targetWidth>rangeTarget.offsetWidth){
+            newX= rangeTarget.offsetWidth - targetWidth;
+        }
+        if(newY<0){
+            newY=0;
+        } else if(newX+targetWidth>rangeTarget.offsetWidth){
+            newY= rangeTarget.offsetHeight - targetWidth;
+        }
+        target.style.left=`${newX}px`;
+        target.style.top=`${newY}px`
+    })
 })
 // header animation
 $(function () {
@@ -28,6 +66,12 @@ $(function () {
 //con01 gsap
 
 $(function () {
+    gsap.fromTo(".textSphere",{
+        alpha:0,
+
+    },{
+        alpha:1
+    },1)
     const tl = gsap.timeline({
         scrollTrigger: {
             trigger: '.con01',
@@ -196,10 +240,12 @@ $(function () {
             end: "-10% 50%",
             scrub: 1,
             onEnter:() => {
-               $(".btnWrap a").addClass("reverse")
+               $(".btnWrap a").addClass("reverse");
+                $(".swiper img").css("filter","brightness(100%)")
             },
             onLeaveBack : () => {
                 $(".btnWrap a").removeClass("reverse")
+                $(".swiper img").css("filter","brightness(50%)")
             },
         }
     })

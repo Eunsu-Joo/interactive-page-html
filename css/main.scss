@@ -516,3 +516,39 @@ margin-left: pc-vw(8px);
     }
 
 }
+
+@keyframes rotate {
+    from {
+        transform: translate(-50%, -50%) rotateX(0deg) rotateY(0deg);
+    }
+    to {
+        transform: translate(-50%, -50%) rotateX(360deg) rotateY(360deg);
+    }
+}
+
+.textSphere {
+    position: absolute;
+    width: pc-vw(300px);
+    height: pc-vw(300px);
+    perspective: 1000px;
+    top: 50%;
+    transform: translateY(-50%) translateX(-50%) rotate(10deg);
+    left: 60%;
+    z-index: 0;
+    .sphere {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform-style: preserve-3d;
+        transform: translate(-50%, -50%);
+        animation: rotate 12s infinite linear;
+        span{
+            position: absolute;
+            font-size: 18px;
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+    }
+}
