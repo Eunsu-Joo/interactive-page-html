@@ -395,7 +395,7 @@ header .gnb ul li a .char:before {
   animation-iteration-count: infinite;
   animation-timing-function: linear;
   transition: 0.4s;
-  background: #fff url("../images/readMore3.png") no-repeat center/7.5520833333vw;
+  background: #ffffff url("../images/readMore3.png") no-repeat center/7.5520833333vw;
 }
 .con03 .btnWrap a:hover {
   border: transparent;
