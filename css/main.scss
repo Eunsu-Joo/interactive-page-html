@@ -290,21 +290,15 @@ header{
         position: relative;
         z-index: 99;
         padding-bottom: 100vh;
-        @include tablet{
-            width: 90%;
-        }
+
         li{
             width: 45%;
             margin-top: 15vh;
             &:nth-child(2n){
                 margin-top: 0;
-                @include tablet{
-                    margin-top: 10vh;
-                }
+
             }
-            @include tablet{
-                width: 100%;
-            }
+
             a{
                 width: 100%;
                 display: block;
@@ -332,9 +326,6 @@ header{
                     position: relative;
                     aspect-ratio: 3/4;
                     overflow: hidden;
-                    @include tablet{
-                        aspect-ratio: 4/3;
-                    }
                     &:before{
                         content: "";
                         width: pc-vw(60px);

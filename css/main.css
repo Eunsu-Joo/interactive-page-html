@@ -307,27 +307,12 @@ header .gnb ul li a .char:before {
   z-index: 99;
   padding-bottom: 100vh;
 }
-@media (min-width: 768px) and (max-width: 1279px) {
-  .con02 .workList {
-    width: 90%;
-  }
-}
 .con02 .workList li {
   width: 45%;
   margin-top: 15vh;
 }
 .con02 .workList li:nth-child(2n) {
   margin-top: 0;
-}
-@media (min-width: 768px) and (max-width: 1279px) {
-  .con02 .workList li:nth-child(2n) {
-    margin-top: 10vh;
-  }
-}
-@media (min-width: 768px) and (max-width: 1279px) {
-  .con02 .workList li {
-    width: 100%;
-  }
 }
 .con02 .workList li a {
   width: 100%;
@@ -355,11 +340,6 @@ header .gnb ul li a .char:before {
   position: relative;
   aspect-ratio: 3/4;
   overflow: hidden;
-}
-@media (min-width: 768px) and (max-width: 1279px) {
-  .con02 .workList li a .imgBox {
-    aspect-ratio: 4/3;
-  }
 }
 .con02 .workList li a .imgBox:before {
   content: "";
