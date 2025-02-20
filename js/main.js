@@ -28,8 +28,9 @@ $(function () {
     createTextAnimation();
     const target= document.querySelector(".textSphere"),
         targetWidth= target.offsetWidth,
-        rangeTarget= document.querySelector(".visual");
-    window.addEventListener("mousemove",function(event) {
+        rangeTarget= document.querySelector(".visual"),
+        deviceWidth= window.innerWidth;
+    function moveAnimation(event){
         const x=event.pageX, y= event.pageY;
         let newX= x- targetWidth/4,newY= y- targetWidth/4;
         if(newX<0){
@@ -44,6 +45,14 @@ $(function () {
         }
         target.style.left=`${newX}px`;
         target.style.top=`${newY}px`
+    }
+    window.addEventListener("mousemove",function(event) {
+        if(deviceWidth<1280)return;
+        moveAnimation(event);
+    })
+    window.addEventListener("click",function(event){
+        if(deviceWidth>1280)return;
+        moveAnimation(event);
     })
 })
 // header animation
