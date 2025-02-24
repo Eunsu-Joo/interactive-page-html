@@ -50,22 +50,63 @@ header{
     padding: pc-vw(15px) pc-vw(30px);
     display: flex;
     justify-content: space-between;
+    align-items: center;
     transition: transform 0.3s;
     color: var(--white);
+    @include mobileAndTablet{
+        padding: 3% 5%;
+    }
     .menuOpen{
         display: none;
-        transition: 0.3s;
+
+        span{
+            width: 100%;
+            height: 1px ;
+            background: #fff;
+            position: absolute;
+            left: 0;
+            transition: all 0.5s;
+            &:nth-child(1){
+                top: 0;
+            }
+            &:nth-child(2){
+                bottom: 0;
+            }
+
+        }
+        @include mobileAndTablet{
+            width: 32px;
+            height: 10px;
+            transition: top 0.5s;
+            display: block;
+            position: relative;
+        }
     }
     .gnb{
         ul{
             display: flex;
             justify-content: space-between;
+            @include mobileAndTablet{
+                display: block;
+                width: 80%;
+                margin: 20% auto;
+            }
             li{
                 &:not(&:first-child){
-                    margin-left: pc-vw(70px)
+                    margin-left: pc-vw(70px);
+                    @include mobileAndTablet{
+                        margin-left: 0px;
+                    }
                 }
                 a{
                     display: block;
+                    @include mobileAndTablet{
+                        font-size: 18vw;
+                        line-height: 1.4;
+                        letter-spacing: -1px;
+                        font-family: "Cormorant Infant", serif;
+
+                    }
                     &:hover{
                        .char{
                            &:before{
@@ -82,6 +123,10 @@ header{
                         position: relative;
                         color: transparent;
                         overflow: hidden;
+                        @include mobileAndTablet{
+                            color: #000;
+                            overflow: inherit;
+                        }
                         &:before,&:after{
                             position: absolute;
                             top: 0;
@@ -91,6 +136,9 @@ header{
                             content: attr(data-char);
                             transition: transform 0.35s;
                             transition-delay: calc(30ms * var(--char-index));
+                            @include mobileAndTablet{
+                                display: none;
+                            }
                         }
                         &:before{
                             transform: translateY(100%);
@@ -99,6 +147,18 @@ header{
                     }
                 }
             }
+        }
+        @include mobileAndTablet{
+            position: fixed;
+            width: 0%;
+            height: 0%;
+            overflow: hidden;
+            background: #fff;
+            left: 0;
+            top: -100%;
+            z-index: 100;
+            transition: top 0.5s;
+            color: #000;
         }
     }
 
@@ -151,15 +211,24 @@ header{
     @include tablet{
         padding-top: tablet-vw(75px);
     }
+    @include mobile{
+        padding-top: mobile-vw(75px);
+    }
     .mainText{
         font-size: pc-vw(100px);
         @include tablet{
-            font-size: tablet-vw(50px);
+            font-size: tablet-vw(70px);
+        }
+        @include mobile{
+            font-size: mobile-vw(50px);
         }
         line-height: 1;
         margin: 0px 0px pc-vw(150px) pc-vw(60px);
         @include tablet{
             margin: 0px 0px tablet-vw(75px) tablet-vw(30px);
+        }
+        @include mobile{
+            margin: 0px 0px mobile-vw(75px) mobile-vw(30px);
         }
     }
     .subText{
@@ -168,6 +237,10 @@ header{
         @include tablet{
             font-size: 1rem;
             margin-left: tablet-vw(30px);
+        }
+        @include mobile{
+            font-size: 0.8rem;
+            margin-left: mobile-vw(30px);
         }
     }
     .scroll{
@@ -180,6 +253,12 @@ header{
             position: absolute;
             bottom: tablet-vw(60px);
         }
+        @include mobile{
+            left: mobile-vw(30px);
+            position: absolute;
+            bottom: mobile-vw(60px);
+            font-size: 0.7rem;
+        }
         .char{
             animation: slide-in 2s cubic-bezier(.5, 0, .5, 1) both reverse;
             animation-delay: calc(60ms * var(--char-index));
@@ -188,7 +267,7 @@ header{
         }
         .mouse{
             visibility: hidden;
-            @include tablet{
+            @include mobileAndTablet{
                 visibility: visible;
             }
         }
@@ -257,6 +336,9 @@ header{
             @include tablet{
                 font-size: tablet-vw(40px);
             }
+            @include mobile{
+                font-size: mobile-vw(40px);
+            }
         }
     }
 }
@@ -280,6 +362,9 @@ header{
         @include tablet{
             font-size: tablet-vw(70px);
         }
+        @include mobile{
+            font-size: mobile-vw(70px);
+        }
     }
     .workList{
         width: 70%;
@@ -290,13 +375,22 @@ header{
         position: relative;
         z-index: 99;
         padding-bottom: 100vh;
-
+@include tablet{
+    width: 80%;
+}
         li{
             width: 45%;
             margin-top: 15vh;
             &:nth-child(2n){
                 margin-top: 0;
 
+            }
+            @include mobile{
+                margin-top: 0;
+                width: 100%;
+                &:not(&:first-child){
+                    margin-top: 10vh;
+                }
             }
 
             a{
@@ -313,6 +407,10 @@ header{
                         @include tablet{
                             font-size: tablet-vw(32px);
                             margin: tablet-vw(14px) 0 tablet-vw(5px);
+                        }
+                        @include mobile{
+                            font-size: mobile-vw(32px);
+                            margin: mobile-vw(14px) 0 mobile-vw(5px);
                         }
 
                     }
@@ -339,9 +437,7 @@ header{
                         z-index: 1;
                         transition: all 0.3s;
                         opacity: 0;
-                        @include tablet{
-                            display: none;
-                        }
+
                     }
                     &:after{
                         content: "";
@@ -358,10 +454,8 @@ header{
                         animation-timing-function: linear;
                         transition: .4s;
                         z-index: 1;
-                        background: #ffffff url("../images/readMore3.png") no-repeat center/ pc-vw(130px);
-                        @include tablet{
-                            display: none;
-                        }
+                        background: #ffffff url("../images/readMore3.png") no-repeat center/ pc-vw(125px);
+
                     }
                     img{
                         width: 100%;
@@ -369,9 +463,7 @@ header{
                         object-fit: cover;
                         transition: all 0.3s;
                         filter: grayscale(1);
-                        @include tablet{
-                            filter: grayscale(0);
-                        }
+
                     }
                 }
                 &:hover{
@@ -379,10 +471,30 @@ header{
                         &:before{
                             opacity: 1;
                             z-index: 2;
+                            @include tablet{
+                                width: tablet-vw(30px);
+                                height: tablet-vw(30px);
+                                background: url("../images/readMore2.png") no-repeat center/ tablet-vw(20px);
+                            }
+                            @include mobile{
+                                width: mobile-vw(30px);
+                                height: mobile-vw(30px);
+                                background: url("../images/readMore2.png") no-repeat center/ mobile-vw(20px);
+                            }
                         }
                         &:after{
-                            width: 130px;
-                            height: 130px;
+                            width:pc-vw(130px);
+                            height: pc-vw(130px);
+                            @include tablet{
+                                width:tablet-vw(65px);
+                                height: tablet-vw(65px);
+                                background: #ffffff url("../images/readMore3.png") no-repeat center/ tablet-vw(60px);
+                            }
+                            @include mobile{
+                                width:mobile-vw(65px);
+                                height: mobile-vw(65px);
+                                background: #ffffff url("../images/readMore3.png") no-repeat center/ mobile-vw(60px);
+                            }
                         }
                         img{
                             filter: grayscale(0);
@@ -394,7 +506,26 @@ header{
         }
     }
 }
-
+body.on{
+    overflow: hidden;
+}
+.gnb.on{
+    width: 100%;
+    height: 100vh;
+    top: 0;
+}
+.menuOpen.on{
+    span{
+        background: #000;
+        z-index: 1000;
+    }
+    .a{
+        transform:rotate(45deg) translate(5px,5px) ;
+    }
+    .b{
+        transform:rotate(-45deg) translate(2px,-1px) ;
+    }
+}
 .con03{
     width: 100vw;
     height: 100vh;
@@ -406,13 +537,16 @@ header{
         top: 50%;
         transform: translate(-50%,-50%);
         z-index: 2;
-        @include tablet{
+        @include mobileAndTablet{
             width: 90%;
         }
         .title{
             font-size: pc-vw(18px);
             @include tablet{
                 font-size: tablet-vw(18px);
+            }
+            @include mobile{
+                font-size: mobile-vw(18px);
             }
         }
         ul{
@@ -422,6 +556,9 @@ header{
                 overflow: hidden;
                 @include tablet{
                     font-size: tablet-vw(50px);
+                }
+                @include mobile{
+                    font-size: mobile-vw(50px);
                 }
                 p{
                     overflow: hidden;
@@ -438,6 +575,17 @@ header{
         left: pc-vw(500px);
         top:60%;
         z-index: 3;
+        @include mobile{
+            a{
+                border: transparent;
+            }
+            left: mobile-vw(200px);
+            img{
+                &:nth-child(2){
+                    opacity: 1 !important;
+                }
+            }
+        }
         a{
             display: inline-block;
             width: pc-vw(150px);
@@ -498,6 +646,15 @@ header{
                     }
                 }
             }
+            @include mobile{
+                width: mobile-vw(75px);
+                height:mobile-vw(75px);
+                &:before{
+                    width: 100%;
+                    height: 100%;
+                    background: #ffffff url("../images/readMore3.png") no-repeat center/ mobile-vw(70px);
+                }
+            }
             img{
                 width: 35%;
                @include center;
@@ -520,6 +677,9 @@ header{
     transform:  translateY(-50%) rotate(5deg);
     @include tablet{
         height: tablet-vw(250px);
+    }
+    @include mobile{
+        height: mobile-vw(250px);
     }
     .swiper-wrapper {
         transition-timing-function: linear !important;
@@ -553,13 +713,12 @@ footer{
     @include tablet{
         padding: tablet-vw(20px) tablet-vw(30px)  ;
     }
+    @include mobile{
+        padding: mobile-vw(20px) mobile-vw(30px)  ;
+    }
     .textWrap{
-        font-size: pc-vw(160px);
         line-height: 1;
         letter-spacing: -1px;
-        @include tablet{
-            font-size: tablet-vw(160px);
-        }
         .title{
             font-size: pc-vw(20px);
             margin-bottom: pc-vw(30px);
@@ -568,6 +727,11 @@ footer{
                 font-size: tablet-vw(10px);
                 margin-bottom: tablet-vw(15px);
                 padding-left: tablet-vw(7.5px);
+            }
+            @include mobile{
+                font-size: mobile-vw(10px);
+                margin-bottom: mobile-vw(15px);
+                padding-left: mobile-vw(7.5px);
             }
         }
         .en2{
@@ -578,6 +742,10 @@ footer{
             @include tablet{
                 margin-bottom: tablet-vw(10px);
                 font-size: tablet-vw(40px);
+            }
+            @include mobile{
+                margin-bottom: mobile-vw(10px);
+                font-size: mobile-vw(40px);
             }
             span{
                 display: block;
@@ -615,8 +783,6 @@ margin-left: pc-vw(8px);
 
 .textSphere {
     position: absolute;
-    width: pc-vw(300px);
-    height: pc-vw(300px);
     perspective: 1000px;
     top: 50%;
     transform: translateY(-50%) translateX(-50%) rotate(10deg);
@@ -631,10 +797,13 @@ margin-left: pc-vw(8px);
         animation: rotate 12s infinite linear;
         span{
             position: absolute;
-            font-size: 18px;
+            font-size: 14px;
             color: white;
             text-decoration: none;
             transition: color 0.3s ease;
+            @include mobileAndTablet{
+                font-size: 10px;
+            }
         }
 
     }

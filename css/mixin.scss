@@ -11,7 +11,7 @@ $desktopBreakPoint: 1280px;
   @return $px / $vw-context * 1vw;
 }
 @function mobile-vw($px){
-  $vw-context: 360 * 0.01 * 1px;
+  $vw-context: 414 * 0.01 * 1px;
   @return $px / $vw-context * 1vw;
 }
 
@@ -22,15 +22,18 @@ $desktopBreakPoint: 1280px;
 }
 
 // 모바일에서 태블릿 : 최소 '모바일에서 태블릿'사이즈부터 ~ 최대 '태블릿'사이즈까지
-@mixin mobileToTablet {
-  @media (min-width: #{$mobileBreakPoint}) and (max-width: #{$tabletBreakPoint - 1px}) {
+@mixin mobileAndTablet {
+  @media (min-width: #{$tabletBreakPoint}) and (max-width: #{$desktopBreakPoint - 1px}) {
+    @content;
+  }
+  @media (min-width: 0px) and (max-width: #{$tabletBreakPoint - 1px}) {
     @content;
   }
 }
 
 // 태블릿 : 최소'태블릿'사이즈부터 ~ 최대 '태블릿에서 노트북'사이즈까지
 @mixin mobile {
-  @media (min-width: 0px) and (max-width: #{$mobileBreakPoint - 1px}) {
+  @media (min-width: 0px) and (max-width: #{$tabletBreakPoint - 1px}) {
     @content;
   }
 }

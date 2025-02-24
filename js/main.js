@@ -1,4 +1,15 @@
 // splitting & scrolla
+
+$(document).on('click','a[href="#"]',function(e){
+    e.preventDefault();
+})
+$(function(){
+    $('.menuOpen').on('click',function (){
+        $('body').toggleClass('on');
+        $(this).toggleClass('on');
+        $('.gnb').toggleClass('on');
+    })
+})
 $(function () {
     Splitting()
     $('.animate').scrolla({
@@ -8,7 +19,8 @@ $(function () {
         animateCssVersion: 4 // used animate.css version (3 or 4)
     });
     const animationElem= document.querySelector(".sphere");
-    const radius = 200;
+    let radius = 200;
+    if(window.innerWidth<1024) radius=100;
     let fragment= document.createDocumentFragment();
     function createTextAnimation(){
 
@@ -47,7 +59,7 @@ $(function () {
         target.style.top=`${newY}px`
     }
     window.addEventListener("mousemove",function(event) {
-        if(deviceWidth<1280)return;
+        // if(deviceWidth<1280)return;
         moveAnimation(event);
     })
     window.addEventListener("click",function(event){
