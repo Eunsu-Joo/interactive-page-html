@@ -39,6 +39,41 @@ body{
     background: var(--black);
     color: var(--white);
 }
+.gnb.on{
+    .menuOpen{
+        span{
+            &.a{
+
+            }
+            &.b{
+
+            }
+        }
+    }
+}
+body.on{
+    overflow: hidden;
+}
+.gnb.on{
+    width: 100%;
+    height: 100vh;
+    top: 0;
+}
+.menuOpen.on{
+    z-index: 1000;
+    span{
+        background: #000;
+
+    }
+    .a{
+        top: 50%;
+        transform:rotate(45deg) translateY(-50%) ;
+    }
+    .b{
+        top: 50%;
+        transform:rotate(-45deg) translateY(-50%) ;
+    }
+}
 //header
 header{
     width: 100%;
@@ -67,16 +102,16 @@ header{
             left: 0;
             transition: all 0.5s;
             &:nth-child(1){
-                top: 0;
+                top: 8px;
             }
             &:nth-child(2){
-                bottom: 0;
+                bottom: 8px;
             }
 
         }
         @include mobileAndTablet{
             width: 32px;
-            height: 10px;
+            height: 32px;
             transition: top 0.5s;
             display: block;
             position: relative;
@@ -506,26 +541,7 @@ header{
         }
     }
 }
-body.on{
-    overflow: hidden;
-}
-.gnb.on{
-    width: 100%;
-    height: 100vh;
-    top: 0;
-}
-.menuOpen.on{
-    span{
-        background: #000;
-        z-index: 1000;
-    }
-    .a{
-        transform:rotate(45deg) translate(5px,5px) ;
-    }
-    .b{
-        transform:rotate(-45deg) translate(2px,-1px) ;
-    }
-}
+
 .con03{
     width: 100vw;
     height: 100vh;
@@ -787,6 +803,7 @@ margin-left: pc-vw(8px);
     top: 50%;
     transform: translateY(-50%) translateX(-50%) rotate(10deg);
     left: 60%;
+    bottom: 40%;
     z-index: 0;
     .sphere {
         position: absolute;

@@ -65,6 +65,31 @@ body {
   color: var(--white);
 }
 
+body.on {
+  overflow: hidden;
+}
+
+.gnb.on {
+  width: 100%;
+  height: 100vh;
+  top: 0;
+}
+
+.menuOpen.on {
+  z-index: 1000;
+}
+.menuOpen.on span {
+  background: #000;
+}
+.menuOpen.on .a {
+  top: 50%;
+  transform: rotate(45deg) translateY(-50%);
+}
+.menuOpen.on .b {
+  top: 50%;
+  transform: rotate(-45deg) translateY(-50%);
+}
+
 header {
   width: 100%;
   position: fixed;
@@ -101,15 +126,15 @@ header .menuOpen span {
   transition: all 0.5s;
 }
 header .menuOpen span:nth-child(1) {
-  top: 0;
+  top: 8px;
 }
 header .menuOpen span:nth-child(2) {
-  bottom: 0;
+  bottom: 8px;
 }
 @media (min-width: 768px) and (max-width: 1279px) {
   header .menuOpen {
     width: 32px;
-    height: 10px;
+    height: 32px;
     transition: top 0.5s;
     display: block;
     position: relative;
@@ -118,7 +143,7 @@ header .menuOpen span:nth-child(2) {
 @media (min-width: 0px) and (max-width: 767px) {
   header .menuOpen {
     width: 32px;
-    height: 10px;
+    height: 32px;
     transition: top 0.5s;
     display: block;
     position: relative;
@@ -615,27 +640,6 @@ header .gnb ul li a .char:before {
   filter: grayscale(0);
 }
 
-body.on {
-  overflow: hidden;
-}
-
-.gnb.on {
-  width: 100%;
-  height: 100vh;
-  top: 0;
-}
-
-.menuOpen.on span {
-  background: #000;
-  z-index: 1000;
-}
-.menuOpen.on .a {
-  transform: rotate(45deg) translate(5px, 5px);
-}
-.menuOpen.on .b {
-  transform: rotate(-45deg) translate(2px, -1px);
-}
-
 .con03 {
   width: 100vw;
   height: 100vh;
@@ -926,6 +930,7 @@ footer .bottom a:hover {
   top: 50%;
   transform: translateY(-50%) translateX(-50%) rotate(10deg);
   left: 60%;
+  bottom: 40%;
   z-index: 0;
 }
 .textSphere .sphere {

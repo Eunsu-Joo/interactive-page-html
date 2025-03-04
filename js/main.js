@@ -41,7 +41,8 @@ $(function () {
     const target= document.querySelector(".textSphere"),
         targetWidth= target.offsetWidth,
         rangeTarget= document.querySelector(".visual"),
-        deviceWidth= window.innerWidth;
+        deviceWidth= window.innerWidth,
+        deviceHeight=window.innerHeight;
     function moveAnimation(event){
         const x=event.pageX, y= event.pageY;
         let newX= x- targetWidth/4,newY= y- targetWidth/4;
@@ -52,14 +53,15 @@ $(function () {
         }
         if(newY<0){
             newY=0;
-        } else if(newX+targetWidth>rangeTarget.offsetWidth){
+        } else if(newY+targetWidth>rangeTarget.offsetHeight){
             newY= rangeTarget.offsetHeight - targetWidth;
         }
+
         target.style.left=`${newX}px`;
         target.style.top=`${newY}px`
     }
     window.addEventListener("mousemove",function(event) {
-        // if(deviceWidth<1280)return;
+        if(deviceWidth<1280)return;
         moveAnimation(event);
     })
     window.addEventListener("click",function(event){
